@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Resume ATS Analyzer</title>
+    <!-- Main Stylesheet (Static) -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <div class="card">
+
+            <!-- Header Section -->
+            <h1 class="title">Resume ATS Analyzer</h1>
+            <p class="subtitle">
+                Analyze your resume against a job description and improve your ATS score.
+            </p>
+
+            <!-- Analysis Form -->
+            <form action="/analyze" method="POST" enctype="multipart/form-data">
+
+                <div class="form-group">
+                    <label>Resume Selection</label>
+                    <!-- Input method selection tabs -->
+                    <div class="tabs">
+                        <button type="button" class="tab-btn active" onclick="showInput('file')">Upload PDF</button>
+                        <button type="button" class="tab-btn" onclick="showInput('text')">Paste Text</button>
+                    </div>
+
+                    <!-- Hidden input to track whether user is uploading a file or pasting text -->
+                    <input type="hidden" name="input_method" id="input_method" value="file">
+
+                    <!-- File drop/upload area -->
+                    <div id="file-input-container">
+                        <input type="file" name="resume_file" id="resume_file">
+                    </div>
+                    <!-- Textarea for pasting resume -->
+                    <div id="text-input-container" style="display: none;">
+                        <textarea name="resume_text" id="resume_text" rows="8"
+                            placeholder="Paste resume text here..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Job Description</label>
+                    <textarea name="job_description" rows="8" required
+                        placeholder="Paste the job description here..."></textarea>
+                </div>
+
+                <button type="submit" class="analyze-btn">Analyze Resume</button>
+
+            </form>
+
+            <!-- Results Section (Visible after analysis) -->
+            {% if ats_score %}
+            <div class="results">
+
+                <!-- Overall ATS Score Display -->
+                <div class="score-box">
+                    <h2>ATS Score</h2>
+                    <div class="score-circle">
+                        {{ ats_score }}%
+                    </div>
+                </div>
+
+                <!-- Keywords matched/missing from the resume -->
+                <div class="keywords-container">
+
+                    <div class="keywords matched">
+                        <h3>Matched Keywords</h3>
+                        <ul>
+                            {% for word in matched %}
+                            <li>{{ word }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="keywords missing">
+                        <h3>Missing Keywords</h3>
+                        <ul>
+                            {% for word in missing %}
+                            <li>{{ word }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    <!-- UI Interaction Scripts -->
+    <script>
+        /**
+         * Switches between file upload and text area input for the resume.
+         * @param {string} method - The input method ('file' or 'text')
+         */
+        function showInput(method) {
+            const fileContainer = document.getElementById('file-input-container');
+            const textContainer = document.getElementById('text-input-container');
+            const inputMethod = document.getElementById('input_method');
+            const btns = document.querySelectorAll('.tab-btn');
+
+            inputMethod.value = method;
+
+            if (method === 'file') {
+                fileContainer.style.display = 'block';
+                textContainer.style.display = 'none';
+                btns[0].classList.add('active');
+                btns[1].classList.remove('active');
+            } else {
+                fileContainer.style.display = 'none';
+                textContainer.style.display = 'block';
+                btns[1].classList.add('active');
+                btns[0].classList.remove('active');
+            }
+        }
+    </script>
+
+</body>
+
+</html>

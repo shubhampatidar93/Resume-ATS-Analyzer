@@ -1,0 +1,188 @@
+/* 
+    Resume ATS Analyzer - Stylesheet
+    Base Theme: Dark
+*/
+
+/* ===== 1. BASE STYLES ===== */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #121212;
+    color: #f5f5f5;
+}
+
+/* ===== 2. LAYOUT & CONTAINERS ===== */
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    min-height: 100vh;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.card {
+    width: 100%;
+    max-width: 750px;
+    padding: 40px;
+    border-radius: 15px;
+    background: #1e1e1e;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== 3. TYPOGRAPHY ===== */
+.title {
+    text-align: center;
+    font-weight: 700;
+}
+
+.subtitle {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #bbb;
+}
+
+/* ===== 4. FORM ELEMENTS ===== */
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 10px;
+    color: #ddd;
+}
+
+textarea,
+input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background: #2a2a2a;
+    color: white;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #3f51b5;
+}
+
+/* ===== 5. BUTTONS ===== */
+.analyze-btn {
+    width: 100%;
+    padding: 14px;
+    background: #3f51b5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.analyze-btn:hover {
+    background: #303f9f;
+}
+
+/* ===== 6. TABS (Input Toggle) ===== */
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.tab-btn {
+    padding: 10px 20px;
+    border: 1px solid #444;
+    background: #2a2a2a;
+    color: #f5f5f5;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.tab-btn.active {
+    background: #3f51b5;
+    border-color: #3f51b5;
+    color: white;
+}
+
+.tab-btn:hover:not(.active) {
+    background: #333;
+}
+
+/* ===== 7. RESULTS SECTION ===== */
+.results {
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 1px solid #333;
+}
+
+/* Score Visualization */
+.score-box {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.score-circle {
+    margin: 20px auto;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    font-size: 32px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 8px solid #3f51b5;
+    color: white;
+    box-shadow: 0 0 20px rgba(63, 81, 181, 0.3);
+}
+
+/* Keywords Grid */
+.keywords-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.keywords {
+    flex: 1;
+    min-width: 300px;
+    padding: 25px;
+    border-radius: 12px;
+}
+
+.matched {
+    background: rgba(31, 58, 45, 0.4);
+    border: 1px solid #2ecc71;
+}
+
+.missing {
+    background: rgba(58, 31, 31, 0.4);
+    border: 1px solid #e74c3c;
+}
+
+.keywords h3 {
+    margin-top: 0;
+    font-size: 18px;
+}
+
+ul {
+    padding-left: 20px;
+    margin-bottom: 0;
+}
+
+li {
+    margin-bottom: 5px;
+}
