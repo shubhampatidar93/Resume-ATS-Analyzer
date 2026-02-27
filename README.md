@@ -1,43 +1,61 @@
-# AI-Resume-Builder
+# Resume ATS Analyzer
 
-A simple AI-powered resume builder and ATS scorer.
+## Overview
+Resume ATS Analyzer is a project designed to analyze resumes and evaluate their compatibility with Applicant Tracking Systems (ATS). The project leverages machine learning to parse and score resumes based on predefined criteria.
 
 ## Project Structure
-AI-Resume-Builder/
-├── backend/
-│   ├── app.py
-│   ├── ml_model.py
-│   ├── resume_generator.py
-│   ├── requirements.txt
-│   └── templates/
-│       └── resume_template.html
-├── frontend/
-│   ├── index.html
-│   ├── result.html
-│   └── style.css
-├── dataset/
-│   └── resume_dataset.csv
-└── README.md
+```
+backend/
+    app.py                # Backend application logic
+    ml_model.py           # Machine learning model for resume analysis
+    requirements.txt      # Python dependencies
+    templates/
+        resume_template.html  # HTML template for resume rendering
 
-## How To Run
+dataset/
+    resume_dataset.jsonl  # Dataset for training/testing the model
 
-### Step 1: Install Dependencies
-```bash
-pip install -r backend/requirements.txt
+frontend/
+    static/
+        style.css         # CSS for frontend styling
+    templates/
+        index.html        # Main HTML file for the frontend
 ```
 
-### Step 2: Train Model
-Open a Python terminal and run:
-```python
-from backend.ml_model import ATSModel
-model = ATSModel()
-model.train("dataset/resume_dataset.csv")
-```
+## Features
+- Parse resumes and extract key information.
+- Evaluate resumes against ATS criteria.
+- Provide feedback to improve resume compatibility.
 
-### Step 3: Run Backend
-```bash
-python backend/app.py
-```
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd Resume ATS Analyzer
+   ```
+3. Install the required Python packages:
+   ```bash
+   pip install -r backend/requirements.txt
+   ```
 
-### Step 4: Open Frontend
-Open `frontend/index.html` in your browser.
+## Usage
+1. Start the backend server:
+   ```bash
+   python backend/app.py
+   ```
+2. Open `index.html` in the `frontend/templates/` directory to access the frontend interface.
+
+## Dataset
+The dataset used for training and testing the model is located in the `dataset/` directory as `resume_dataset.jsonl`.
+
+## Contributing
+Contributions are welcome! Feel free to open issues or submit pull requests.
+
+## License
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+## Acknowledgments
+- Thanks to all contributors and open-source libraries used in this project.
